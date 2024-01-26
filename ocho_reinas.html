@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head onload="colorPar(); colorImpar()">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="img/white_reina.png" type="image/png" sizes="16x16">
+    <title>8 Reinas</title>
+  </head>
+  <body>
+
+    <h1>Ocho Reinas</h1>
+    <table id="tablero">
+
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+      <tr>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+        <td class="clic" onclick="colocarReina(this)"></td>
+      </tr>
+
+      
+     
+      
+
+    </table>
+
+    <div class="centrar-div">
+    <br/>
+    <select name="" id="opciones" onchange="solucion()" class="clic">
+      <option value="0" selected disabled hidden>Selecciona para ver posibles selecciones</option>
+      <option value="1">Seleccion 1</option>
+      <option value="2">Seleccion 2</option>
+      <option value="3">Seleccion 3</option>
+      <option value="4">Seleccion 4</option>
+      <option value="5">Seleccion 5</option>
+      <option value="6">Seleccion 6</option>
+    </select>
+
+    <input type="button" onclick="restartButtom()" value="Restart" class="clic">
+
+    <p id="porColocar">Reinas por colocar: 8</p>
+    <p id="colocadas">Reinas colocadas: 0</p>
+  </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

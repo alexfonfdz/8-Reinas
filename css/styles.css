@@ -1,0 +1,56 @@
+table{
+    /* border-collapse: collapse; */
+    /* Definimos el color de la linea */
+    /* border: px solid black; */
+    border: 2px solid black;
+    height: 500px;
+    width: 500px;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+}
+
+tr{
+    margin: 0px;
+    padding: 0px;
+}
+  
+td{
+    margin: 0px;
+    padding: 0px;
+}
+
+tr:nth-child(odd) td:nth-child(even),
+tr:nth-child(even) td:nth-child(odd) {
+    background-color: black;
+}
+
+tr:nth-child(even) td:nth-child(even),
+tr:nth-child(odd) td:nth-child(odd) {
+    background-color: white; 
+}
+
+.clic:hover{
+    cursor: pointer;
+}
+
+.clic:active{
+    cursor: grabbing;
+}
+
+select{
+    margin: 0px 20px 5px 0px;
+    margin: auto;
+}
+
+input{
+    margin: auto;
+}
+
+.centrar-div{
+    max-width: 650px;
+    margin: auto;
+    text-align: left;
+}
