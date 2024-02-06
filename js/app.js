@@ -1,5 +1,7 @@
 let reinasMax = 8;
 let reinasColocadas = 0;
+let columnasBloqueadas = [];
+let indice = -1;
 
 
 function colocarReina(celda){
@@ -8,6 +10,7 @@ function colocarReina(celda){
     let opcion = document.getElementById('opciones');
     let valor = opcion.options[opcion.selectedIndex].value;
     let valor_num = parseInt(valor);
+    console.log(columnasBloqueadas)
 
 
     if(valor_num == 0){
@@ -36,6 +39,7 @@ function colocarReina(celda){
                     tablero.rows[renglon].cells[i].removeAttribute('onclick');
                     tablero.rows[renglon].cells[i].style = "background-image: url(./img/x.png); background-size: cover";
                     tablero.rows[renglon].cells[i].classList.remove('clic');
+                    columnasBloqueadas.push(renglon + ',' + i);
 
                 }
                 //bloqueamos columna
@@ -44,6 +48,7 @@ function colocarReina(celda){
                     tablero.rows[i].cells[columna].removeAttribute('onclick');
                     tablero.rows[i].cells[columna].style = "background-image: url(./img/x.png); background-size: cover";
                     tablero.rows[i].cells[columna].classList.remove('clic');
+                    columnasBloqueadas.push(i + ',' + columna);
 
                 }
             }
@@ -59,6 +64,7 @@ function colocarReina(celda){
                     tablero.rows[r].cells[c].removeAttribute('onclick');
                     tablero.rows[r].cells[c].style = "background-image: url(./img/x.png); background-size: cover";
                     tablero.rows[r].cells[c].classList.remove('clic');
+                    columnasBloqueadas.push(r + ',' + c);
                     r--;
                     c++;
                 }else{
@@ -75,6 +81,7 @@ function colocarReina(celda){
                     tablero.rows[r].cells[c].removeAttribute('onclick');
                     tablero.rows[r].cells[c].style = "background-image: url(./img/x.png); background-size: cover";
                     tablero.rows[r].cells[c].classList.remove('clic');
+                    columnasBloqueadas.push(r + ',' + c);
                     r++;
                     c--;
                 }else{
@@ -91,6 +98,7 @@ function colocarReina(celda){
                     tablero.rows[r].cells[c].removeAttribute('onclick');
                     tablero.rows[r].cells[c].style = "background-image: url(./img/x.png); background-size: cover";
                     tablero.rows[r].cells[c].classList.remove('clic');
+                    columnasBloqueadas.push(r + ',' + c);
                     r--;
                     c--;
                 }else{
@@ -106,6 +114,7 @@ function colocarReina(celda){
                     tablero.rows[r].cells[c].removeAttribute('onclick');
                     tablero.rows[r].cells[c].style = "background-image: url(./img/x.png); background-size: cover";
                     tablero.rows[r].cells[c].classList.remove('clic');
+                    columnasBloqueadas.push(r + ',' + c);
                     r++;
                     c++;
                 }else{
@@ -128,17 +137,21 @@ function colocarReina(celda){
         for(let i = 0; i < 8; i++){
 
             if (columna != i) {
-
-                tablero.rows[renglon].cells[i].setAttribute('onclick', 'colocarReina(this)');
-                tablero.rows[renglon].cells[i].style="background-image: none";
-                tablero.rows[renglon].cells[i].classList.add('clic');
+                columnasBloqueadas.splice(columnasBloqueadas.indexOf(renglon + ',' + i),1);
+                if(!columnasBloqueadas.includes(renglon + ',' + i)){
+                    tablero.rows[renglon].cells[i].setAttribute('onclick', 'colocarReina(this)');
+                    tablero.rows[renglon].cells[i].style="background-image: none";
+                    tablero.rows[renglon].cells[i].classList.add('clic');
+                }
             }
             //desbloqueamos columba
             if (renglon != i) {
-
-                tablero.rows[i].cells[columna].setAttribute('onclick', 'colocarReina(this)');
-                tablero.rows[i].cells[columna].style="background-image: none";
-                tablero.rows[i].cells[columna].classList.add('clic');
+                columnasBloqueadas.splice(columnasBloqueadas.indexOf(i + ',' + columna),1);
+                if(!columnasBloqueadas.includes(i + ',' + columna)){
+                    tablero.rows[i].cells[columna].setAttribute('onclick', 'colocarReina(this)');
+                    tablero.rows[i].cells[columna].style="background-image: none";
+                    tablero.rows[i].cells[columna].classList.add('clic');
+                }
 
             }
         }
@@ -151,9 +164,15 @@ function colocarReina(celda){
         //Recorremos diagonales
         while (r >= 0 && c < 8) {
             if(renglon != r && columna != c){
-                tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
-                tablero.rows[r].cells[c].style="background-image: none";
-                tablero.rows[r].cells[c].classList.add('clic');
+                indice = columnasBloqueadas.indexOf(r + ',' + c);
+                if(indice !== -1){
+                    columnasBloqueadas.splice(columnasBloqueadas.indexOf(r + ',' + c),1);
+                }
+                if(!columnasBloqueadas.includes(r + ',' + c)){
+                    tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
+                    tablero.rows[r].cells[c].style="background-image: none";
+                    tablero.rows[r].cells[c].classList.add('clic');
+                }
                 r--;
                 c++;
             }else{
@@ -168,9 +187,16 @@ function colocarReina(celda){
           c = columna;
           while (r < 8 && c >= 0) {
             if(renglon != r && columna != c){
-                tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
-                tablero.rows[r].cells[c].style="background-image: none";
-                tablero.rows[r].cells[c].classList.add('clic');
+                indice = columnasBloqueadas.indexOf(r + ',' + c);
+                if(indice !== -1){
+                    columnasBloqueadas.splice(columnasBloqueadas.indexOf(r + ',' + c),1);
+                }
+                if(!columnasBloqueadas.includes(r + ',' + c)){
+                    tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
+                    tablero.rows[r].cells[c].style="background-image: none";
+                    tablero.rows[r].cells[c].classList.add('clic');
+                }
+
                 r++;
                 c--;
             }else{
@@ -184,9 +210,15 @@ function colocarReina(celda){
           c = columna;
         while (r >= 0 && c >= 0) {
             if(renglon != r && columna != c){
-                tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
-                tablero.rows[r].cells[c].style="background-image: none";
-                tablero.rows[r].cells[c].classList.add('clic');
+                indice = columnasBloqueadas.indexOf(r + ',' + c);
+                if(indice !== -1){
+                    columnasBloqueadas.splice(columnasBloqueadas.indexOf(r + ',' + c),1);
+                }
+                if(!columnasBloqueadas.includes(r + ',' + c)){
+                    tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
+                    tablero.rows[r].cells[c].style="background-image: none";
+                    tablero.rows[r].cells[c].classList.add('clic');
+                }
                 r--;
                 c--;
             }else{
@@ -201,9 +233,15 @@ function colocarReina(celda){
           c = columna;
           while (c < 8 && r < 8) {
             if(renglon != r && columna != c){
-                tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
-                tablero.rows[r].cells[c].style="background-image: none";
-                tablero.rows[r].cells[c].classList.add('clic');
+                indice = columnasBloqueadas.indexOf(r + ',' + c);
+                if(indice !== -1){
+                    columnasBloqueadas.splice(columnasBloqueadas.indexOf(r + ',' + c),1);
+                }
+                if(!columnasBloqueadas.includes(r + ',' + c)){
+                    tablero.rows[r].cells[c].setAttribute('onclick', 'colocarReina(this)');
+                    tablero.rows[r].cells[c].style="background-image: none";
+                    tablero.rows[r].cells[c].classList.add('clic');
+                }
                 r++;
                 c++;
             }else{
